@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<div :key="index" v-for="(pays, index) in pays">
+        <h1> {{ pays.name}} </h1>    
+        </div> 
+	</head>
+	<body>
+		<script>
+        import axios from 'axios'
+
+        export default {
+            name: 'Pays',
+            data(){
+                return{
+                    pays: null,
+                }
+            },
+        mounted(){
+            axios
+            .get('https://restcountries.com/v3.1/all')
+            .then((response) => {
+                this.pays = reponse.data;
+                console.log(this.pays)
+            });
+        },
+        }
+        </script>
+	</body>
+</html>
