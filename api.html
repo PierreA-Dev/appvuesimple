@@ -1,32 +1,39 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width,initial-scale=1" />
-		<div :key="index" v-for="(pays, index) in pays">
-        <h1> {{ pays.name}} </h1>    
-        </div> 
-	</head>
-	<body>
-		<script>
-        import axios from 'axios'
-
-        export default {
-            name: 'Pays',
-            data(){
-                return{
-                    pays: null,
-                }
-            },
-        mounted(){
-            axios
-            .get('https://restcountries.com/v3.1/all')
-            .then((response) => {
-                this.pays = reponse.data;
-                console.log(this.pays)
-            });
-        },
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nom des pays</title>
+  </head>
+  <body>
+    <div>
+        <li>common: {{namepays.common}}</li>
+        <li>official: {{namepays.official}}</li>
+    </div>
+  </body>
+  <script src="https://unpkg.com/vue@3"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          result: [],
+          pays: '',
         }
-        </script>
-	</body>
+      },
+      methods: {
+        Pays_recup: async function () {
+          return await axios
+            .get(
+              `https://restcountries.com/v2/name/common=${this.pays}&boost=official`,
+            )
+            .then((response) => {
+              this.resultat = response.data
+            })
+        },
+      },
+    })
+    app.mount('#app')
+  </script>
 </html>
