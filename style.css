@@ -1,0 +1,58 @@
+/* Nous avons déjà importer une police d'écriture sur le site "googlefont" */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #17A2B8;
+}
+.conseil {
+    padding: 25px;
+    background-color: #fff;
+    border-radius: 6px;
+    width: 420px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.1);
+}
+.boite {
+    text-align: center;
+    width: 100%;
+    border: 1px solid #17A2B8;
+    border-radius: 6px;
+    padding: 25px 10px;
+    position: relative;
+}
+.boite::after {
+    position: absolute;
+    top: -13px;
+    left: 10px;
+    background-color: #fff;
+    content: 'CONSEIL';
+    color: #17A2B8;
+
+}
+p {
+    color: #ccc;
+}
+button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 10px 0;
+    border: 0;
+    background-color: #17A2B8;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+}
+span {
+    font-size: 18px;
+    color: #17A2B8;
+}

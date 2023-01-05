@@ -1,2 +1,1 @@
-# appvuesimple
-api : https://restcountries.com/v3.1/all
+Application web permettant de générer des conseils à partir d'une API.
