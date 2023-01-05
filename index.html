@@ -8,11 +8,42 @@
      <link rel="stylesheet" href="style.css">
  </head>
  <body>
-     <div class="conseil">
-         <div class="boite"><p>Cliquez sur le boutton 'Conseil' pour générer un conseil.</p></div>
-         <button class="generer"> Conseil </button>
+     <div class="conseil" id="main">
+         <div class="boite"> 
+         <p>{{advice}}</p></div>
+         <button class="generer" @click="fetchData()" > Conseil </button>
+
      </div>
-     <script src="script.js"></script>
     
  </body>
+<script src="https://unpkg.com/vue@3"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    const apiURL = 'https://api.adviceslip.com/advice'
+
+    Vue.createApp({
+        data() {
+            return{
+                advice: "Cliquez sur le boutton 'Conseil' pour générer un conseil."
+            };
+        },
+
+        methods:{
+            fetchData: async function() {
+                try {
+                    const response = await axios.get(apiURL)
+                    this.advice = response.data.slip.advice
+                    console.log(response)
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+        }
+
+
+
+    }).mount("#main")
+
+
+</script>
  </html>
